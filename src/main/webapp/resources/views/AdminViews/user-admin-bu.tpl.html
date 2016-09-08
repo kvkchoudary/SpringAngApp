@@ -1,0 +1,245 @@
+<script type="text/ng-template" id="groupHeaderTemplate.html">
+    <div style="width: auto; padding-bottom: 3px;">
+        <div layout="horizontal" class="ui-grid-tree-base-row-header-buttons">
+            <i ng-class="{'ui-grid-icon-minus-squared': ( ( grid.options.showTreeExpandNoChildren && row.treeLevel > -1 )
+                || ( row.treeNode.children && row.treeNode.children.length > 0 ) ) && row.treeNode.state === 'expanded', 'ui-grid-icon-plus-squared': ( ( grid.options.showTreeExpandNoChildren && row.treeLevel > -1 )
+                || ( row.treeNode.children && row.treeNode.children.length > 0 ) ) && row.treeNode.state === 'collapsed'}" ng-style="{'padding-left': grid.options.treeIndent * row.treeLevel + 'px'}">
+            </i>
+            <div ng-if="aggregation.col === colContainer.renderedColumns[row.treeLevel]" ng-repeat="aggregation in row.treeNode.aggregations" style="text-transform: capitalize; font-weight: 400;">
+                <span ng-if="aggregation.col.grouping.groupHeaderFilter === 'camelize'">
+                    {{aggregation.groupVal | camelize }}
+                </span>
+                <span ng-if="aggregation.col.grouping.groupHeaderFilter !== 'camelize'">
+                    {{aggregation.groupVal }}
+                </span>
+                <span class="badge">{{aggregation.value}}</span>
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/ng-template" id="userItemTemplate.html"> 
+    <div class="uno-list-item" ng-attr-id="{{row.entity.soeid}}" ng-class="row.entity.isUnRead ? 'corner-fold' : ''" layout="column" layout-fill>
+        <div layout="row" layout-align="space-between center" style="min-height: 27px">
+
+			<span flex="20" style="width:80px">
+				<div ng-if="row.entity.active=='Y'" layout="column" layout-align="start" class="actions-icon" style="float:left">
+						<md-button aria-label="Add" class="md-icon-button md-primary actions-icon-button" title="Active">
+							<md-icon class="step">done</md-icon>
+						</md-button>
+				</div>
+				<div ng-if="row.entity.active=='N'" layout="column" layout-align="start" class="actions-icon" style="float:left">
+						<md-button aria-label="Add" class="md-icon-button md-primary actions-icon-button" title="Active">
+							<md-icon class="step">clear</md-icon>
+						</md-button>
+				</div>
+				<div ng-if="row.entity.fid=='Y'" layout="column" layout-align="start" class="actions-icon" style="float:left">
+						<md-button aria-label="Add" class="md-icon-button md-primary actions-icon-button" title="Functional Id">
+							<md-icon class="step">shop</md-icon>
+						</md-button>
+				</div>
+			</span>
+				
+			<span flex="55">
+				<span class="user-list-item-top-left">
+					<span class="user-list-item-product-name">
+						<md-tooltip md-direction="left">
+							<div>User Id: {{row.entity.soeId}}</div>
+							<div>Name: {{row.entity.fullName}}</div>		       				
+						</md-tooltip>
+						<span class="user-FullName" ng-if="row.entity.fid=='N'">{{row.entity.fullName}}</span>
+						<span class="user-FullName" ng-if="row.entity.fid=='Y'">{{row.entity.fullName}} - {{row.entity.soeId}}</span>
+					</span>
+				</span>
+			</span>
+					
+			<span flex="40">
+				<span>
+					<span class="user-id" ng-if="row.entity.fid=='N'">{{row.entity.soeId}}</span>
+				</span>
+			</span>
+        </div>
+		<div layout="row" layout-align="space-between center" ng-repeat="group in row.entity.userGroupList" ng-if="row.entity.fid=='N'">
+			<span flex="80" ng-if="$first">
+				<span>
+						<md-tooltip md-direction="left">
+								<div ng-repeat="groupTooltip in row.entity.userGroupList">{{groupTooltip.groupName}}</div>								       				
+						</md-tooltip>
+						<span class="user-id">{{group.groupName}}</span>
+						<span class="badge" ng-if="row.entity.userGroupList.length > 1">{{row.entity.userGroupList.length}}</span>
+					</span>
+				</span>
+			</span>
+        </div>
+		<div layout="row" layout-align="space-between center" ng-if="row.entity.fid=='Y'">
+			<span flex="60">
+				<span>
+					<span class="user-id">{{row.entity.fid_description}}</span>
+				</span>
+            </span>
+			</span>
+        </div>
+    </div>
+</script>
+<script type="text/ng-template" id="listItemTemplate.html">
+	<div ng-if="row.groupHeader" ng-click="grid.appScope.onToggleClick(row)" ng-include="'groupHeaderTemplate.html'"></div>
+    <div ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns | limitTo: 1"  ng-click="grid.appScope.onSingleClick(row)" ng-if="!row.groupHeader && !col.isRowHeader" style="width:460px; border-bottom: solid 1px grey !important;">
+		<div ng-include="'userItemTemplate.html'" style="min-width:100%" class="ui-grid-cell" ui-grid-cell layout-fill></div>
+    </div>
+</script>
+<div class="sidenavdemoBasicUsage" style="height: 800px;" ng-app="MyApp" layout="column" ng-cloak="">
+  <section flex="" layout="row">
+    <md-sidenav class="md-sidenav-left" md-whiteframe="4" md-is-locked-open="$mdMedia('gt-md')" md-component-id="left" md-disable-backdrop="">
+	
+	<!--
+	 <md-toolbar class="md-theme-indigo">
+        <h1 class="md-toolbar-tools">Sidenav Left</h1>
+      </md-toolbar>
+      <md-content ng-controller="LeftCtrl" layout-padding="">
+        <md-button class="md-primary" ng-click="close()" hide-gt-md="">
+          Close Sidenav Left
+        </md-button>
+        <p hide="" show-gt-md="">
+          This sidenav is locked open on your device. To go back to the default behavior,
+          narrow your display.
+        </p>
+      </md-content>		 
+	-->
+	<div class="row" >
+		<div flex style="margin: 4px;">
+			<div class="input-group">
+				<span class="input-group-addon">
+					<i class="fa fa-filter"></i>
+				</span>
+					<input type="text" ng-model="vm.searchText" ng-change="vm.refreshGrid($viewValue)"
+						   placeholder="Filter users"  ng-model-options="{debounce: 400}" class="form-control filter-alerts">				
+					<i ng-show="vm.searchText" ng-click="vm.clearQuickFilter();" class="material-icons" style="font-size: large; position: absolute;right: 4px;top: 8px; z-index: 2">close</i>
+			</div>
+		</div>
+	</div>
+
+	<div class="row" style="background:blue;">
+		<span flex="15">
+			<md-tabs flex md-selected="vm.selectedIndex" md-center-tabs="false"
+					 md-no-pagination="false" flex>
+				<md-tab>
+					<md-tab-label>
+						<span>Users</span>
+					</md-tab-label>
+				</md-tab>
+			</md-tabs>
+		</span>
+		<span flex="15">
+		<md-button style="height:30px; line-height:30px" class="md-icon-button" ng-disabled="true" ng-click="vm.editView()" aria-label="Edit Settings">
+				<md-tooltip>
+					Edit Settings
+				</md-tooltip>
+				<md-icon class="step">settings</md-icon>
+			</md-button>
+		</span>
+		<span flex="15">
+				<md-button style="height:30px; line-height:30px; width:36px" class="md-icon-button" ng-click="vm.downloadUsers()" aria-label="Download users">
+					<md-tooltip>
+						Download Users to excel
+					</md-tooltip>
+					<!-- <md-icon class="step">file_download</md-icon> -->
+					<img class="step mdIcon" src="img/pics/Excel-icon.png">
+				</md-button>
+		</span>
+		<span flex="15">
+			<md-checkbox ng-model="vm.view.fid" ng-change="vm.saveView(vm.view);" aria-label="FID">
+				FID
+			</md-checkbox>
+		</span>
+		<span flex="15">
+			<md-checkbox ng-model="vm.view.inActive" ng-change="vm.saveView(vm.view);" aria-label="InActive?">
+				Inactive
+			</md-checkbox>
+		</span>
+		<span flex="20">
+			<div layout="column" layout-align="end center" class="actions-icon">
+				<md-button aria-label="Add" class="md-icon-button md-primary actions-icon-button" title="Add User." ng-click="vm.addUser()" style="padding-top:-5px; margin-top:-5px; height:30px">
+					<md-icon class="step">person_add</md-icon>
+				</md-button>
+				<md-chip hide-sm hide-md>Add User</md-chip>
+			</div>
+		</span>
+	</div>
+	<!--
+	<div ng-if="vm.showExcelMenu" layout="row" layout-align="space-between start" layout-wrap >
+		<div flex="100" layout="row" style="position:absolute; z-index:20">
+			<span style="margin-left:205px"></span>
+			<md-content layout="row" style="min-height: 0; overflow: hidden;" class="md-whiteframe-z4">
+				<md-content class="excelDL" name="excelDL" layout-padding layout="column" flex ng-class="" style="width:250px; overflow-x: hidden; textarea:focus, input:focus{outline: none;}" >
+					<section layout="row" layout-sm="column" layout-align="end left" flex>
+						<md-radio-group ng-model="vm.excelSelection.selectionChoice" >
+							<md-radio-button style="outline: none" value="selected" >Export Selected Users</md-radio-button>
+							<md-radio-button style="outline: none" value="all" >Export All Users</md-radio-button>
+						</md-radio-group>
+						
+					</section>
+					<div>
+						<md-button class="md-raised clear-margin-top fixed-height-button" ng-click="vm.showExcelMenu = false">
+							Cancel
+						</md-button>       
+						<md-button class="md-raised md-primary clear-margin-top fixed-height-button" ng-click="vm.downloadUsers(); vm.showExcelMenu=false;">Download</md-button>
+					</div>
+				</md-content>
+			</md-content>
+		</div>
+	</div> 
+	<div layout="row">
+		<form name="userForm" ng-if="vm.mode==='edit'" style="margin:10px" flex>
+			<div layout="row" flex>
+				<label>Order by</label>
+				<md-select ng-model="vm.selectedSettings.orderBy">
+					<md-option ng-repeat="column in vm.gridOptions.columnDefs | filter: {enableSorting: true}" value="{{column.field}}">{{column.displayName}}
+					</md-option>
+				</md-select>
+			</div>
+			<div layout="row" flex>
+				<label>Group by</label>
+				<md-select ng-model="vm.selectedSettings.groupBy">
+					<md-option ng-repeat="column in vm.gridOptions.columnDefs | filter: {enableGrouping: true}" value="{{column.field}}">{{column.displayName}}
+					</md-option>
+				</md-select>
+			</div>
+			<section layout="row" layout-sm="column" layout-align="end center">
+				<span flex></span>
+				<md-button ng-click="vm.mode = 'view'">Cancel</md-button>
+				<md-button class="md-primary" ng-click="vm.saveView(vm.selectedSettings)">Apply</md-button>
+			</section>
+		</form>
+	</div>
+	-->
+	<div class="user-list" flex  ng-style="{'height' : vm.gridTableHeight }" ng-hide="vm.mode==='edit'" ui-grid="vm.gridOptions"  ui-grid-move-columns ui-grid-grouping ui-grid-selection ui-grid-auto-resize style="width: 99%"></div>
+	</md-sidenav>
+	
+    <md-content flex="" layout-padding="">
+      <div layout="column" layout-fill="" layout-align="top center">
+			<div ui-view="details"></div>
+      </div>
+      <div flex=""></div>
+    </md-content>
+	
+    <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="right">
+      <md-toolbar class="md-theme-light">
+        <h1 class="md-toolbar-tools">Sidenav Right</h1>
+      </md-toolbar>
+      <md-content ng-controller="RightCtrl" layout-padding="">
+        <form>
+          <md-input-container>
+            <label for="testInput">Test input</label>
+            <input id="testInput" type="text" ng-model="data" md-autofocus="">
+          </md-input-container>
+        </form>
+        <md-button class="md-primary" ng-click="close()">
+          Close Sidenav Right
+        </md-button>
+      </md-content>
+    </md-sidenav>
+  </section>
+</div>
+<!--
+Copyright 2016 Google Inc. All Rights Reserved. 
+Use of this source code is governed by an MIT-style license that can be in foundin the LICENSE file at http://material.angularjs.org/license.
+-->

@@ -1,0 +1,21 @@
+<!-- Temp1.html -->
+<div class="form-group">
+    <label for="email">Project1</label><input type="text" class="form-control" name="email" ng-model="project1">	
+	<label for="empid">Project2</label><input type="text" class="form-control" name="empid" ng-model="project2">	
+	<label for="empid">Project3</label><input type="text" class="form-control" name="empid" ng-model="project3">	
+	<label for="empid">Country</label><input type="text" class="form-control" name="empid" ng-model="country">	
+</div>
+<div id="form-views" ui-view></div>
+
+<a href="#/form/profile"><button type="submit">Profile</button></a>
+
+<button ng-click="chnageState('F1App')" ng-init="count=0">F1App</button>
+<button ng-click="chnageState('Profile')" ng-init="count=0">Profile</button>
+
+<span>
+  count: {{count}}
+</span>
+
+
+
+

@@ -1,0 +1,52 @@
+<!-- form.html -->
+		<div id="form-container">
+			<div class="page-header text-center">
+				<h3 style="text-align: right;"><a ui-sref-active="active" ui-sref="login">Logout</a></h3>
+				<h2>Demo Applications</h2>                 
+				<!-- the links to our nested states using relative paths -->
+				<!-- add the active class if the state matches our ui-sref -->
+				<div id="status-buttons" class="text-center">
+					<a ui-sref-active="active" ui-sref=".profile.check"><span>1</span> Profile</a>
+					<a ui-sref-active="active" ui-sref=".userAdmin.userDetails"><span>2</span> Admin App</a>
+				<!--<a ui-sref-active="active" ui-sref=".payment"><span>3</span> Payment</a>-->
+					<a ui-sref-active="active" ui-sref=".f1race"><span>3</span> F1 App</a>
+					<a ui-sref-active="active" ui-sref=".gridPagination"><span>4</span> GridDisplay</a>
+					<a ui-sref-active="active" ui-sref=".instantSearch"><span>5</span> InstantSearch App</a>
+				</div>
+			</div>        
+			<!-- use ng-submit to catch the form submission and use our Angular function -->
+			<form id="signup-form" ng-submit="processForm()">
+				<!-- our nested state views will be injected here -->
+				<div id="form-views" ui-view></div>
+			</form>
+		</div>
+		
+		<!-- High Chart 
+		<div id="container">Placeholder for chart</div>
+		
+		<div>
+			<canvas id="pie" class="chart chart-pie" chart-data="data" chart-labels="labels" chart-options="options"></canvas> 
+		</div>
+		
+		<!--
+		<!-- show our formData as it is being typed 
+		<pre>
+			Name: {{ formData.name }}</br>
+			Email Id: {{ formData.email }}</br>
+		</pre>
+		
+		<div id="container">Placeholder for chart</div>
+		<!--
+		<div>
+			<canvas id="pie" class="chart chart-pie" chart-data="data" chart-labels="labels" chart-options="options"></canvas> 
+		</div>
+		
+		<h2>Doughnut Chart</h2>
+		<div>
+			<canvas id="doughnut" class="chart chart-doughnut"  chart-data="data" chart-labels="labels"></canvas> 
+			<div class="donut-inner">
+					<h5>47 / 60 st</h5>
+					<span>(30 / 25 st)</span>
+			</div>
+		</div>
+		-->

@@ -1,0 +1,135 @@
+<div ng-if="!vm.emptyUser" class="user-details" layout="column" layout-fill>
+    <md-toolbar class="user-header">
+        <div layout-gt-sm="row" layout-sm="column" layout-align-sm="start start" layout-fill layout-align="space-between center">
+            <div flex layout="column">
+                <span class="title">User Entitlements</span>
+                <span class="label-text">{{vm.user.soeId}} - {{vm.user.fullName}}</span>
+            </div>
+			<div>
+
+			<div layout="row" layout-align-sm="start start" style="min-height: 0; overflow: hidden;">
+			<div layout="column" layout-align="end center" class="actions-icon">
+				<md-button aria-label="Edit" class="md-icon-button md-primary actions-icon-button" title="Edit User." ng-click="vm.editUser(vm.user.soeId)">
+					<md-icon class="step" style="background-color:##050505">mode_edit</md-icon>
+				</md-button>
+				<md-chip hide-sm hide-md>Edit User</md-chip>
+			</div>
+			<span flex></span>
+			<div layout="column" layout-align="end center" class="actions-icon">
+				<md-button aria-label="Remove" class="md-icon-button md-primary actions-icon-button" title="Remove User." ng-disabled="vm.user.active =='N'" ng-click="vm.confirmation($event,vm.user.soeId)">
+					<md-icon class="step" style="background-color:##050505">clear</md-icon>
+				</md-button>
+				<md-chip hide-sm hide-md ng-disabled="vm.user.active =='N'">Remove User</md-chip>
+			</div>
+			</div>
+		</div>
+    </md-toolbar>
+    <div layout="row" flex style="height: 0px;" ng-if="!vm.editFlag">
+		<div style="width: 100%;">
+        <md-content flex class="md-whiteframe-z4" du-scroll-container id="scroll-container">
+            <div layout="column">
+                <div id="tab1" ng-if="vm.viewDefinitions.tab1 && !vm.viewDefinitions.tab1.tabConfig.hide" class="alert-inbox-details-tab-content">
+                    <div layout="row" layout-align="space-around center" class="header-background">
+                        <h4 class="details-section-header">{{vm.viewDefinitions.tab1.tabConfig.label}}</h4>
+                        <span flex></span>
+                       <!-- <md-icon class="step icon" ng-if="vm.viewDefinitions.tab1.tabConfig.popoutStateName" ng-click="vm.openInModal(vm.viewDefinitions.tab1.tabConfig.popoutStateName)">launch</md-icon> -->
+                    </div>
+					
+					<div ui-view="tab1"></div>
+                    <!--<div ui-view="tab1" class="details-section" layout="column"></div>-->
+                </div>
+                <div id="tab2" ng-if="vm.viewDefinitions.tab2 && !vm.viewDefinitions.tab2.tabConfig.hide" class="alert-inbox-details-tab-content">
+                    <div layout="row" layout-align="space-around center" class="header-background">
+                        <h4 class="details-section-header">{{vm.viewDefinitions.tab2.tabConfig.label}}</h4>
+                        <span flex></span>
+                        <!-- <md-icon class="step icon" ng-if="vm.viewDefinitions.tab2.tabConfig.popoutStateName" ng-click="vm.openInModal(vm.viewDefinitions.tab2.tabConfig.popoutStateName)">launch</md-icon> -->
+                    </div>
+					<div ui-view="tab2"></div>
+                    <!--<div ui-view="tab2" class="details-section user-details" layout="column" layout-fill></div>-->
+                </div>
+            </div>
+        </md-content>
+		</div>
+        <div class="nav">
+            <div class="navicons" layout="column" layout-align="center center">
+                <md-button ng-if="vm.viewDefinitions.tab1 && !vm.viewDefinitions.tab1.tabConfig.hide" du-smooth-scroll du-scrollspy ng-click="vm.scrollTo('tab1')" href="#tab1" du-scroll-container="scroll-container" layout="column" layout-align="space-around center" aria-label="{{vm.viewDefinitions.tab1.tabConfig.label}}">
+                    <md-icon class="step">{{vm.viewDefinitions.tab1.tabConfig.icon}}</md-icon>
+                    <span ng-if="vm.viewDefinitions.tab1.tabConfig.counter" class="badge" ng-bind="vm.getTabCounter(vm.viewDefinitions.tab1.tabConfig)"></span>
+                </md-button>
+                <md-button ng-if="vm.viewDefinitions.tab2 && !vm.viewDefinitions.tab2.tabConfig.hide" du-smooth-scroll du-scrollspy ng-click="vm.scrollTo('tab2')" href="#tab2" du-scroll-container="scroll-container" layout="column" layout-align="space-around center" aria-label="{{vm.viewDefinitions.tab2.tabConfig.label}}">
+                    <md-icon class="step">{{vm.viewDefinitions.tab2.tabConfig.icon}}</md-icon>
+                    <span ng-if="vm.viewDefinitions.tab2.tabConfig.counter" class="badge" ng-bind="vm.getTabCounter(vm.viewDefinitions.tab2.tabConfig)"></span>
+                </md-button>
+            </div>
+        </div>
+    </div>
+	
+<div class="header-background layout-align-space-around-center" style="border-color:#F7F7F7" ng-if="vm.editFlag">
+ <span></span>
+ <h4 class="details-section-header ng-binding"> User Summary </h4>
+ <div layout="column" >
+
+		<div layout="row" layout-wrap layout-align="start center" class="summary-content">
+			<md-content class="md-padding" style="width:100%">
+				<div layout="row">
+					<md-input-container class="form-group col-md-3 col-sm-6 col-xs-12" ng-click="vm.openBottomSheet()" flex="" >
+						<span class="label-text">SOE ID</span>
+						<input type="text" id="testInput" ng-model="vm.user.soeId" disabled="disabled">
+					</md-input-container>
+					<md-input-container class="form-group col-md-3 col-sm-6 col-xs-12" flex="" >
+						<span class="label-text">Name</span>
+						<input type="text" id="testInput" ng-model="vm.user.fullName" disabled="disabled">
+					</md-input-container>
+					<md-input-container class="form-group col-md-3  col-sm-6 col-xs-12" flex="" >
+						<span class="label-text">Email</span>
+						<input type="text" id="testInput" ng-model="vm.user.email">
+					</md-input-container>
+					<md-input-container class="form-group col-md-3 col-sm-6 col-xs-12" flex="" >
+						<span class="label-text">Emergency User</span>
+						<input type="text" id="testInput" ng-model="vm.user.emer_user" disabled="disabled"/>
+					</md-input-container>
+				</div>
+				<div layout="row">
+					<md-input-container class="form-group col-md-3 col-sm-6 col-xs-12" flex="" >
+						<span class="label-text">Active</span>
+						<input type="text" id="testInput" ng-model="vm.user.active">
+					</md-input-container>
+						<md-input-container class="form-group col-md-3 col-sm-6 col-xs-12" flex="" >
+						<span class="label-text">FID</span>
+						<input type="text" id="testInput" ng-model="vm.user.fid" disabled="disabled">
+					</md-input-container>
+					<md-input-container class="form-group col-md-3 col-sm-6 col-xs-12" flex="" >
+						<span class="label-text">FID Desc</span>
+						<input type="text" id="testInput" ng-model="vm.user.fid_description" disabled="disabled">
+					</md-input-container>	
+					<md-input-container class="form-group col-md-3 col-sm-6 col-xs-12" flex="" >
+						<span class="label-text">Last Updated</span>
+						<input type="text" id="testInput" ng-model="vm.user.lastUpdated" disabled="disabled">
+					</md-input-container>
+				</div>
+			</md-content>
+		</div>
+ </div>
+ <h4 class="details-section-header ng-binding"> User Groups </h4>
+ <div class="audit-content"></div>
+	<div class="layout-align-space-around-center" style="border-color:#F7F7F7;width: 100%; height: 220px" ng-if="vm.user.fid=='N'">
+		<center>
+		<multi-select 	ng-model="adminUser.groups" 
+						available="groups" 
+						selected-label="Current groups" 
+						available-label="Available groups" 
+						display-attr="groupName">
+		</multi-select>
+		</center>
+	</div>
+	<div  style="border-color:#F7F7F7;width: 800px;" ng-if="vm.user.fid=='Y'">		
+		<h4 class="details-section-header ng-binding">Functional Id can not be added to Groups </h4>		
+	</div>
+	<center>
+	<div layout="row" style="min-height: 0; display:inline-block; overflow: hidden;" align="right">
+		<md-button class="md-raised clear-margin-top fixed-height-button" id="apply" ng-click="vm.cancelUpdate()">Cancel</md-button>
+		<md-button class="md-raised md-primary clear-margin-top fixed-height-button" id="apply" ng-click="vm.updateUser(vm.user)">Submit</md-button>
+	</div>
+	</center>
+ </div> 
+</div>

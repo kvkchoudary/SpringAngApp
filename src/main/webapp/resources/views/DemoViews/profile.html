@@ -1,0 +1,73 @@
+<div class="header-background layout-align-space-around-center" style="border-color:#F7F7F7">
+	<span></span>
+	<div layout="column" >
+		<div layout="row" layout-wrap layout-align="start center" class="summary-content">
+			<md-content class="md-padding" style="width:100%">
+				<div layout="row">
+					<md-input-container class="form-group col-md-3 col-sm-6 col-xs-12" ng-click="vm.openBottomSheet()" flex="" >
+						<span class="label-text">SOE ID</span>
+						<input type="text" id="testInput" ng-model="vm.user.soeId" ng-disabled="true">
+					</md-input-container>
+					<md-input-container class="form-group col-md-3 col-sm-6 col-xs-12" flex="" >
+						<span class="label-text">Name</span>
+						<input type="text" id="testInput" ng-model="vm.user.fullName" disabled="true">
+					</md-input-container>
+					<md-input-container class="form-group col-md-3  col-sm-6 col-xs-12" flex="" >
+						<span class="label-text">Email</span>
+						<input type="text" id="testInput" ng-model="vm.user.email" disabled="disabled">
+					</md-input-container>
+					<md-input-container class="form-group col-md-3 col-sm-6 col-xs-12" flex="" >
+						<span class="label-text">Emergency User</span>
+						<input type="text" id="testInput" ng-model="vm.user.emer_user" disabled="disabled">
+					</md-input-container>
+				</div>
+				<div layout="row">
+					<md-input-container class="form-group col-md-3 col-sm-6 col-xs-12" flex="" >
+						<span class="label-text">Active</span>
+						<input type="text" id="testInput" ng-model="vm.user.active" disabled="disabled">
+					</md-input-container>
+						<md-input-container class="form-group col-md-3 col-sm-6 col-xs-12" flex="" >
+						<span class="label-text">FID</span>
+						<input type="text" id="testInput" ng-model="vm.user.fid" disabled="disabled">
+					</md-input-container>
+					<md-input-container class="form-group col-md-3 col-sm-6 col-xs-12" flex="" >
+						<span class="label-text">FID Desc</span>
+						<input type="text" id="testInput" ng-model="vm.user.fid_description" disabled="disabled">
+					</md-input-container>	
+					<md-input-container class="form-group col-md-3 col-sm-6 col-xs-12" flex="" >
+						<span class="label-text">Last Updated</span>
+						<input type="text" id="testInput" ng-model="vm.user.lastUpdated" disabled="disabled">
+					</md-input-container>
+				</div>
+			</md-content>
+		</div>
+	</div>
+	<h4 class="details-section-header ng-binding" ng-if="vm.user.fid=='N'"> User Group </h4>
+	<div class="alert-history" ng-if="vm.user.fid=='N'">
+		<div layout="row" layout-fill class="audit-header">
+	 		<span flex></span>
+		</div>
+	
+		<div style="width:100%;text-align:center">
+			<center>
+			&nbsp;
+			<table width="80%" style="border-left:1px solid #eee;border-right:1px solid #eee; border-bottom:1px solid #eee">
+				<thead>
+					<tr style="color:#2e3d5c; background:#EEF0F7">
+						<th style="text-align:center">Group</th>
+						<th style="text-align:center">Role</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="group in vm.user.userGroupList">
+						<td style="text-align:center">{{group.groupName}}</td>
+						<td style="text-align:center;border-left:1px solid #eee;">{{group.roleId}}</td>
+					</tr>
+				</tbody>
+			</table>
+			</center>
+		</div>
+		<div class="audit-content"></div>
+	</div>
+</div>
+ 

@@ -1,0 +1,36 @@
+body {
+	color:#000;
+	height:auto;
+	}
+
+
+h2 {
+font-weight:bold;
+color: #FFF;
+}
+	
+	
+label {
+	color:#fff;
+	}
+
+.donut-inner{
+color:#fff
+}
+
+
+.userForm-response {
+background-color: #DDD;
+padding:10px;
+}
+
+.customBTN {
+background-color: #00ccff;
+color: #fff;
+}
+
+.customBTN:hover {
+background-color: orange;
+}
+
+md-select {margin:10px 0;}

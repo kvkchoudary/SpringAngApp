@@ -1,0 +1,133 @@
+.user-FullName {
+	font-weight: bold;
+}
+.user-id {
+	/*font-weight: bold;*/
+}
+
+.user-list {
+
+    .ui-grid-row.ui-grid-row-selected .ui-grid-cell {
+		border-left: solid 6px #7cddcc; 
+		background-color: rgba(0,115,119, .15);
+    }
+    .ui-grid-row-selected .ui-grid-cell {
+		border-left: solid 6px #7cddcc; 
+		background-color: rgba(0,115,119, .15);
+    }
+	.ui-grid-row:nth-child(even) .ui-grid-cell {
+		border-left: solid 6px transparent; 
+		background-color: white;
+		border-bottom: solid 1px gray;
+	}
+	.ui-grid-row:nth-child(odd) .ui-grid-cell {
+		border-left: solid 6px transparent; 
+		background-color: white;
+		border-bottom: solid 1px gray;
+	}
+
+	.ui-grid-viewport {
+		width: auto !important;
+	}
+	.ui-grid-row:hover:not(.ui-grid-row-selected):not(.ui-grid-tree-header-row) .ui-grid-cell{
+		border-left: solid 6px #43d2e9;
+		cursor: pointer;
+	}
+	
+	.ui-grid-row:not(.ui-grid-tree-header-row) .md-button {
+		padding: 2px;
+		/*background: white;
+		border-bottom: rgba(110, 136, 147, 0.3) 1px solid;*/
+		border-radius: 0px;
+	}
+	
+	
+	
+	.ui-grid-cell-contents {
+		outline:none
+	}
+		
+	
+	.ui-grid-row-selected:nth-child(even) .ui-grid-cell {
+		background-color: rgba(0,115,119, .15);
+	}
+	.ui-grid-row-selected:nth-child(odd) .ui-grid-cell {
+		background-color: rgba(0,115,119, .15);
+	}
+	
+	.uno-list-item {
+		/*height: 80px;*/
+		border-top-left-radius: 0px;
+		border-bottom-left-radius: 0px;
+		margin-left: 6px;
+		font-size: 12px;
+		width: 100%;
+		position: relative;
+		
+		.actions-icon {
+			font-size: x-small;
+			font-weight: 500;
+			padding: 2px;
+        }
+		.md-button {
+			height: 30px;
+			line-height: 30px;
+			margin: 0;
+			padding: 1px;
+			color: inherit;
+			font-weight: 100;
+			width: 100%;
+		
+			.selected {
+				color: #03a9f4;
+			}
+		
+			md-icon {
+				font-size: 24px;
+				height: 28px;
+				width: 28px;
+			}
+		}
+		
+	}
+}
+/*multi selection boxes*/
+.multiSelect {
+    overflow: auto;
+    display: inline-block;
+}
+.multiSelect .selectionDD {
+	height:180px;
+	min-width:275px;
+}
+
+.multiSelect .select {
+    margin-right: 20px;
+    float: left;
+}
+.multiSelect .text {
+    clear: both;
+    font-size: 11px;
+}
+.multiSelect label::after {
+    content: ":";
+}
+.btn.mover {
+    display: block;
+    margin-top: 25px;
+    vertical-align: top;
+}
+.btn.mover.left {
+    padding: 3px 8px 2px 6px;
+}
+.btn.mover.right {
+    margin-top: 24px;
+    padding: 3px 7px 2px;
+}
+.btn.mover i {
+    margin: 0;
+}
+
+li {
+    list-style-type: disc;
+}

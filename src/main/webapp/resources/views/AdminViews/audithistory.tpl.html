@@ -1,0 +1,63 @@
+<div class="alert-history">
+    <div layout="column" class="audit-section" ng-repeat="auditListItem in vm.user.auditHistory">
+		<div layout="row" layout-fill class="audit-header">
+            <!--<span employee-tooltip empid="{{auditListItem.changed_by}}" show="fullName"></span>-->
+            <span style="white-space: pre" ng-if="auditListItem.change_done.indexOf('Added User') > -1">  
+								{{auditListItem.changed_by}}(GIDA) Added User</span>
+			<span style="white-space: pre" ng-if="auditListItem.change_done.indexOf('Added FID') > -1">  
+								{{auditListItem.changed_by}}(GIDA) Added FID</span>
+			<span style="white-space: pre" ng-if="auditListItem.change_done.indexOf('Added to Group') > -1">  
+								{{auditListItem.changed_by}}(GIDA) Modified User</span>
+			<span style="white-space: pre" ng-if="auditListItem.change_done.indexOf('Activated User') > -1">  
+								{{auditListItem.changed_by}}(GIDA) Activated User</span>
+			<span style="white-space: pre" ng-if="auditListItem.change_done.indexOf('Activated FID') > -1">  
+								{{auditListItem.changed_by}}(GIDA) Activated FID</span>
+			<span style="white-space: pre" ng-if="auditListItem.change_done.indexOf('Deactivated User') > -1"> 
+								{{auditListItem.changed_by}}(GIDA) Deactivated User</span>
+			<span style="white-space: pre" ng-if="auditListItem.change_done.indexOf('Deactivated FID') > -1">  
+								{{auditListItem.changed_by}}(GIDA) Deactivated FID</span>
+			<span style="white-space: pre" ng-if="auditListItem.change_done.indexOf('Removed from Group') > -1"> 
+								{{auditListItem.changed_by}}(GIDA) Modified User</span>			
+            <span flex></span>
+	         <span style="text-align: right;">
+	             {{ auditListItem.changed_time | convertToFromNow: true }} ago
+	         </span>
+        </div>		
+        <div layout-fill class="audit-content">
+            <div layout="row">
+                <div>
+					<!--
+                    <span class="audit-label">
+                       Source: {{auditListItem.change_source }} - Changed By: {{auditListItem.changed_by }} - Change Done: {{auditListItem.change_done }}
+                    </span>
+					-->
+					<span ng-if="auditListItem.change_done.indexOf('Added User') > -1">
+                       {{auditListItem.userId }} - {{auditListItem.changed_userName }}
+                    </span>
+					<span ng-if="auditListItem.change_done.indexOf('Added FID') > -1">
+                       {{auditListItem.userId }} 
+                    </span>
+					<span ng-if="auditListItem.change_done.indexOf('Added to Group') > -1">
+                       {{auditListItem.changed_userName }} is {{auditListItem.change_done }}
+                    </span>
+					<span ng-if="auditListItem.change_done.indexOf('Activated User') > -1">
+                       {{auditListItem.changed_userName }} is Activated
+                    </span>					
+					<span ng-if="auditListItem.change_done.indexOf('Activated FID') > -1">
+                       {{auditListItem.userId }} is Activated
+                    </span>					
+					<span ng-if="auditListItem.change_done.indexOf('Deactivated User') > -1">
+                       {{auditListItem.changed_userName }} is Deactivated
+                    </span>					
+					<span ng-if="auditListItem.change_done.indexOf('Deactivated FID') > -1">
+                       {{auditListItem.userId }} is Deactivated
+                    </span>
+					<span ng-if="auditListItem.change_done.indexOf('Removed from Group') > -1">
+                       {{auditListItem.changed_userName }} is {{auditListItem.change_done }}
+                    </span>					
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="audit-content"></div>
+</div>

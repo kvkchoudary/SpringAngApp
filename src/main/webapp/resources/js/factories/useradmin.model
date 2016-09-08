@@ -1,0 +1,30 @@
+angular.module('inSync.factories')
+    .factory('useradminModel', function ($rootScope, useradminService) {
+        var model = {
+            users: [], isInitialized: false
+        };
+
+        (function init() {
+            loadUsers();
+        })();
+
+        function loadUsers() {
+            /*useradminService.getAdminUsers().then(function (response) {
+                    _.forEach(response, function (user) {
+                            model.users.push(user);
+                        });
+                    model.isInitialized = true;
+                });
+			*/
+				model.users=[{soeId:'vk29544',fullName:'Venkat',
+							fid_description:'Test1',fid:'N',
+							email:'abc@gmail.com',emer_user:'N',active:'Y',
+							userGroupList:[{groupName:'GroupName1',groupId:'Id1'},{groupName:'GroupName2',groupId:'Id2'}]},
+							{soeId:'Rk29544',fullName:'Krishna',
+							fid_description:'Test2',fid:'N',
+							email:'bcd@gmail.com',emer_user:'N',active:'Y',
+							userGroupList:[{groupName:'GroupName3',groupId:'Id4'},{groupName:'GroupName3',groupId:'Id4'}]}];
+					model.isInitialized = true;
+        }
+        return model;
+    });

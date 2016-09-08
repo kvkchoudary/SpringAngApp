@@ -1,0 +1,136 @@
+<!-- form-profile.html -->
+<div class="row">
+	<div class="col-md-6">
+		<div class="form-group">
+		<h2>User Details</h2>
+			<label for="name">Name</label>
+			<input type="text" class="form-control" name="name" ng-model="formData.name">
+			<label for="email">Email</label>
+			<input type="text" class="form-control" name="email" ng-model="formData.email">
+			
+			<label for="empid">Emp Id</label>
+			<input type="text" class="form-control" name="empid" ng-model="formData.empid">
+			
+			<label for="empid">Technology</label>
+			<input type="text" class="form-control" name="empid" ng-model="formData.technology">
+			
+			<label for="empid">Department</label>
+			<input type="text" class="form-control" name="empid" ng-model="formData.dep">
+			
+			<label for="empid">Project</label>
+			<input type="text" class="form-control" name="empid" ng-model="formData.project">
+		</div>
+	</div>
+
+	<div class="col-md-6">
+	<div>	
+		<h2>Profile Summary</h2>
+		<div class="userForm-response">
+			<b>Name:</b> {{ formData.name }} <br>
+			<b>Email Id:</b> {{ formData.email }} <br> 
+			<b>Emp Id:</b> {{ formData.empid }} <br>
+			<b>Technology:</b> {{ formData.technology }} <br>
+			<b>Department:</b> {{ formData.dep }} <br>
+			<b>Project:</b> {{ formData.project }} <br>
+		</div>
+	</div>
+	</div>
+</div><!--end row-->
+
+
+<div>
+	<h2>Team</h2>
+	<div class="form-group">
+		<div align="right">		
+			<md-button aria-label="Add" class="customBTN" title="Add Member" ng-click="addMember()" style="padding-top:-5px; margin-top:-5px; height:30px">
+					+ Add team member
+			</md-button>
+		</div>
+		<div id="employees" ui-grid="employeesGridOptions" ui-grid-move-columns ui-grid-resize-columns class="cross-no-securities-grid"></div>
+	</div>
+</div>
+
+
+<div>
+	<h2>Portfolio</h2>
+	<div class="form-group">
+	<!--
+		<div layout="column" layout-align="center center">
+			<md-progress-circular md-mode="indeterminate"></md-progress-circular>
+		</div>
+	-->
+		<div align="right">
+			<md-button aria-label="Add" class="customBTN" title="Add Share" ng-click="addShare()" style="padding-top:-5px; margin-top:-5px; height:30px">
+					<!--<md-icon class="step">person_add</md-icon> Test if label appears-->
+					+ Add Share
+			</md-button>
+		</div>
+		<div id="cross-no-securities" ui-grid="crossNoSecuritiesGridOptions" ui-grid-move-columns ui-grid-resize-columns class="cross-no-securities-grid"></div>
+	</div>
+</div>
+
+<h2>HighChart</h2>		
+<div id="container">Placeholder for chart</div>
+
+
+<div class="row">
+	<div class="col-md-6">
+		<h2>Pie Chart</h2>	
+			<div>
+				<canvas id="pie" class="chart chart-pie" chart-data="data" chart-labels="labels" chart-options="options">
+				</canvas> 
+			</div>
+	</div>
+	<div class="col-md-6">
+	<h2>Doughnut Chart</h2>
+	<div>
+		<canvas id="doughnut" class="chart chart-doughnut"  chart-data="data" chart-labels="labels"></canvas> 
+		<div class="donut-inner">
+				<h5>47 / 60 st</h5>
+				<span>(30 / 25 st)</span>
+		</div>
+	</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-6">
+		<h2>BottomSheet</h2>	
+			<div>
+				  <md-button ng-click="openBottomSheet()">Open a Bottom Sheet!</md-button>
+			</div>
+	</div>
+</div>
+
+
+<div  ng-controller="BottomSheetExample" class="md-padding" ng-cloak>
+  <h2 class="md-title">Usage</h2>
+  <p>Bottom sheet can be displayed by clicking the button below.  Once shown, it can be dismissed by either swiping down or clicking in the shaded area.</p>
+  <h2 class="md-title">Actions</h2>
+  <p>Use one of the following buttons to display a bottom sheet.</p>
+  <div class="bottom-sheet-demo inset" layout="row" layout-sm="column" layout-align="center" >
+    <md-button flex="50" class="md-primary md-raised" ng-click="showListBottomSheet()">Show as List</md-button>
+    <md-button flex="50" class="md-primary md-raised" ng-click="showGridBottomSheet()">Show as Grid</md-button>
+  </div>
+  <div ng-if="alert">
+    <br/>
+    <b layout="row" layout-align="center center" class="md-padding">
+      {{alert}}
+    </b>
+  </div>
+</div>
+
+
+<!--
+<div class="form-group row">
+	<div class="col-xs-6 col-xs-offset-3">
+		<a ui-sref="form.interests" class="btn btn-block btn-info">
+		Next Section <span class="glyphicon glyphicon-circle-arrow-right"></span>
+		</a>
+	</div>
+</div>
+<!--
+	<div class="form-group">
+		 <div ui-view></div>
+	</div>
+-->

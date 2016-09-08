@@ -1,0 +1,116 @@
+<div style="border-color:#F7F7F7; width:98%, background-color:darkgray">
+	<font color="red" size="4">User Form</font>
+	<div layout="column" >
+		<div layout="row">
+		  <md-content style="overflow-y:hidden; width: 100%;">
+				 <!--  
+					  <div layout="row">
+						<span flex="15" style="margin-top: 16px;" ng-hide="vm.user.fid">SOE ID:</span>
+							<ui-select flex="400" style="margin-top: 8px;width: 400px;" ng-model="vm.selectedItem"  on-select="vm.onSelected($item)" ng-hide="vm.user.fid">
+								<ui-select-match allow-clear="true" placeholder="Search.."><em>{{$select.selected.soeId}}</em> - {{$select.selected.name}}</ui-select-match>
+								<ui-select-choices repeat="item in vm.queryResults"
+										refresh="vm.query($select.search)"
+										refresh-delay="400">
+									<div layout="column">
+											<div ng-bind-html="item.soeId" class="alert-actionslist"></div>
+											<div ng-bind-html="item.name"></div>
+									</div>
+								</ui-select-choices>
+							</ui-select>
+						</div>
+				   -->
+				    <div layout="row">
+						<md-input-container  flex="" >
+						  <label>Emp Id</label>
+						 <input type="text" id="testInput" ng-model="vm.user.soeId" ng-disabled="vm.user.fid">
+						</md-input-container>
+						<!--</div>
+						<div layout="row">-->
+						<md-input-container  flex="" >
+						  <label>Name</label>
+						 <input type="text" id="testInput" ng-model="vm.user.name" ng-disabled="vm.user.fid">
+						</md-input-container>
+						<md-input-container flex="" >
+						  <label>Email</label>
+						  <input type="text" id="testInput" ng-model="vm.user.emailAddress" ng-disabled="vm.user.fid">
+						</md-input-container>			  
+				   </div>
+				   
+				   <div layout="row">
+						<md-input-container>
+						<label>Street Name</label>
+						<input></md-input-container> <md-input-container>
+						<label>City</label>
+						<input></md-input-container>
+					</div>
+				   <!--<p>Selected Value: 
+						<span class="radioValue">{{ data.group1 }}</span> </p>
+						<md-radio-group ng-model="data.group1">
+							<md-radio-button value="Apple" class="md-primary">Apple</md-radio-button>
+							<md-radio-button value="Banana"> Banana </md-radio-button>
+							<md-radio-button value="Mango">Mango</md-radio-button>
+						</md-radio-group>
+				   -->
+				   <div layout="column" ng-cloak>
+						<md-content class="md-padding">
+							<form ng-submit="$event.preventDefault()">
+								  <!--<p>Use <code>md-autocomplete</code> to search for matches from local or remote data sources.</p>-->
+								  <md-autocomplete  ng-disabled="vm.isDisabled"  md-no-cache="vm.noCache"
+									  md-selected-item="vm.selectedItem"  md-search-text-change="vm.searchTextChange(vm.searchText)"
+									  md-search-text="vm.searchText"  md-selected-item-change="vm.selectedItemChange(item)"
+									  md-items="item in vm.querySearch(vm.searchText)"  md-item-text="item.display"
+									  md-min-length="0"  placeholder="What is your Province?">
+									<md-item-template>
+									  <span md-highlight-text="vm.searchText" md-highlight-flags="^i">{{item.display}}</span>
+									</md-item-template>
+									<md-not-found>
+									  No Provinces matching "{{vm.searchText}}" were found.
+									  <a ng-click="vm.newState(vm.searchText)">Create a new one!</a>
+									</md-not-found>
+								  </md-autocomplete>
+								  <br/>
+							</form>
+						</md-content>				
+				</div>
+				<div layout="row">
+						<md-checkbox ng-model="vm.user.emer_user"  ng-click="vm.emerUser(vm.user.emer_user)" ng-disabled="vm.user.fid" aria-label="Emergency User?">
+							Emergency User?
+						</md-checkbox>
+				 <!--  </div>
+				   <div layout="row">-->
+						<md-checkbox ng-model="vm.user.fid" ng-click="vm.fid(vm.user.fid)" ng-disabled="vm.user.emer_user" aria-label="FID?">
+							FID?
+						</md-checkbox>
+				   </div>
+				   <div layout="row" ng-if="vm.isFid">
+						<md-input-container  flex="" >
+						  <label>FID UserName</label>
+						  <input type="text" id="fidName" ng-disabled="vm.user.emer_user" ng-model="vm.user.fidUserName">
+						</md-input-container>
+						<md-input-container  flex="" >
+						  <label>FID Description</label>
+						  <input type="text" id="fidDesc" ng-disabled="vm.user.emer_user" ng-model="vm.user.fidDescription">
+						</md-input-container>
+				   </div>
+		  </md-content>
+	    </div>
+	</div>
+	<div class="audit-content"></div>	
+	<div ng-if="!vm.isFid">
+	<font color="red" size="4">Groups</font>
+		<center>
+		<multi-select 	ng-model="user.groups" 
+						available="groups" 
+						selected-label="Current groups" 
+						available-label="Available groups" 
+						display-attr="groupName">
+		</multi-select>
+		</center>
+	</div>
+	<center>
+	<div layout="row" style="min-height: 0; display:inline-block; overflow: hidden;" align="right">
+		<md-button class="md-raised clear-margin-top fixed-height-button" id="apply" ng-click="vm.cancel(vm)">Cancel</md-button>
+		<md-button class="md-raised md-primary clear-margin-top fixed-height-button" id="apply" ng-click="vm.addUser(vm)" align="right">Submit</md-button>
+	</div>
+	</center>
+</div>

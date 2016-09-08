@@ -1,0 +1,98 @@
+<div layout="row" >
+    <div flex style="margin: 5px;">
+        <div class="input-group">
+        <span class="input-group-addon">
+            <i class="fa fa-filter"></i>
+        </span>
+            <input type="text" ng-model="vm.searchText" ng-change="vm.refreshGrid($viewValue)"
+                   placeholder="Filter users"
+                   ng-model-options="{debounce: 400}" class="form-control filter-alerts">
+            
+			<i ng-show="vm.searchText" ng-click="vm.clearQuickFilter();" class="material-icons" style="font-size: large; position: absolute;right: 4px;top: 8px; z-index: 2">close</i>
+
+        </div>
+    </div>
+</div>
+<div layout="row" style="background:#eee;">
+	<span flex="20">
+	    <md-tabs flex md-selected="vm.selectedIndex" md-center-tabs="false"
+	             md-no-pagination="false" flex>
+	        <md-tab>
+	            <md-tab-label>
+	                <span>Users</span>
+	            </md-tab-label>
+	        </md-tab>
+	    </md-tabs>
+	</span>
+	<span flex="15">
+	<md-button style="height:30px; line-height:30px" class="md-icon-button" ng-disabled="true" ng-click="vm.editView()" aria-label="Edit Settings">
+            <md-tooltip>
+                Edit Settings
+            </md-tooltip>
+            <md-icon class="step">settings</md-icon>
+        </md-button>
+	</span>
+	<span flex="15">
+			<md-button style="height:30px; line-height:30px; width:36px" class="md-icon-button" ng-click="vm.downloadUsers()" aria-label="Download users">
+	        	<md-tooltip>
+	                Download Users to excel
+	            </md-tooltip>
+	            <!-- <md-icon class="step">file_download</md-icon> -->
+	            <img class="step mdIcon" src="img/logo/Excel-icon.png">
+	        </md-button>
+	</span>
+	<span flex="15">
+        <md-checkbox ng-model="vm.view.fid" ng-change="vm.saveView(vm.view);" aria-label="FID">
+            FID
+        </md-checkbox>
+	</span>
+	<span flex="15">
+        <md-checkbox ng-model="vm.view.inActive" ng-change="vm.saveView(vm.view);" aria-label="InActive?">
+            Inactive
+        </md-checkbox>
+    </span>
+	<span flex="20">
+		<div layout="column" layout-align="end center" class="actions-icon">
+	        <md-button aria-label="Add" class="md-icon-button md-primary actions-icon-button" title="Add User." ng-click="vm.addUser()" style="padding-top:-5px; margin-top:-5px; height:30px">
+	            <md-icon class="step">person_add</md-icon>
+	        </md-button>
+	        <md-chip hide-sm hide-md>Add User</md-chip>
+	    </div>
+    </span>
+    
+    
+	<!--
+	<div>
+		<md-button id="add" style="height:30px; line-height:30px" ng-click="vm.addUser()" class="md-icon-button" aria-label="Add User">
+					<md-tooltip>
+						Add User
+					</md-tooltip>            
+					<img class="step mdIcon" src="assets/images/add_user.png">
+					<font size="1" color="black">Add User</font> 
+		</md-button>
+	</div>   
+	-->
+</div>
+
+<div ng-if="vm.showExcelMenu" layout="row" layout-align="space-between start" layout-wrap >
+	<div flex="100" layout="row" style="position:absolute; z-index:20">
+		<span style="margin-left:205px"></span>
+		<md-content layout="row" style="min-height: 0; overflow: hidden;" class="md-whiteframe-z4">
+		<md-content class="excelDL" name="excelDL" layout-padding layout="column" flex ng-class="" style="width:250px; overflow-x: hidden; textarea:focus, input:focus{outline: none;}" >
+			<section layout="row" layout-sm="column" layout-align="end left" flex>
+				<md-radio-group ng-model="vm.excelSelection.selectionChoice" >
+					<md-radio-button style="outline: none" value="selected" >Export Selected Users</md-radio-button>
+					<md-radio-button style="outline: none" value="all" >Export All Users</md-radio-button>
+				</md-radio-group>
+				
+			</section>
+			<div>
+	            <md-button class="md-raised clear-margin-top fixed-height-button" ng-click="vm.showExcelMenu = false">
+					Cancel
+	            </md-button>       
+				<md-button class="md-raised md-primary clear-margin-top fixed-height-button" ng-click="vm.downloadUsers(); vm.showExcelMenu=false;">Download</md-button>
+			</div>
+		</md-content>
+		</md-content>
+	</div>
+</div> 

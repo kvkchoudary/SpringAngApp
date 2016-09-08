@@ -1,0 +1,378 @@
+/*MAIN PANEL*/
+
+/*md-dialog box*/
+
+.md-dialog-container md-dialog {
+    md-toolbar{
+        .uno-app-header
+    }
+
+    md-dialog-content{
+        .alert-summary , .alert-details, .alert-comments, .alert-attachments, .alert-history {
+            color: black;
+            padding: 20px;
+            margin:0px;
+        }
+    }
+    .summary-content {
+        margin-top: 10px;
+    }
+}
+
+/*uno-app-header-top-bar */
+
+md-toolbar.uno-app-header, .uno-app-header{  
+
+    background-color: @uno-app-header-bg-color; 
+    color: @uno-app-header-color;
+    md-icon {
+        color: @uno-app-header-color;
+        &:hover {
+            color: @uno-app-color-white;
+        }
+        md-icon{
+
+        }
+    }
+    .btn{
+
+        &:hover {
+            color: @uno-app-color-white;
+        }
+
+        &:focus {
+            color: @uno-app-color-white;
+        }
+    }
+    h1 {
+    color: @uno-app-color-white;
+    font-size: 26px;
+    font-weight:300;
+    margin-left: 24px;  /* or set inline code ...left:26px...*/
+    }
+} 
+
+/*uno-app-header-top-bar End */
+
+
+/* default styles for common elements*/
+
+.sub-section-title {
+    margin-top: 15px;
+    border-bottom: 1px dotted @uno-app-green-border-color;
+    padding: 0 0 5px 12px;
+    font-weight: 300;
+    font-size: 16px;
+    color: #5987DE;
+}
+
+
+.form-group {
+    margin-bottom: 5px;
+    background-color: transparent;
+
+    .form-control {
+    background-color: transparent;
+    }
+
+    .label {
+    color: #9da0a7;
+    font-size: 1em;
+    font-weight: 300;
+    padding: 0;
+    border: none;
+    }
+
+    .label-text {
+    font-size: 1.1em;
+    border: none;
+    padding: 0;
+    height: auto;
+    box-shadow: none;
+    transition: none;
+    color:@uno-app-black-color;
+    }
+    .label-large {
+    color: #9da0a7;
+    font-size: 0.94em;
+    font-weight: 300;
+    width: 160px;
+    text-align: right;
+    }
+
+    .critical {
+    color: @uno-app-label-red;
+    font-weight: 500;
+    }
+  }
+  .alert-details .chart-icons-con {
+  position: absolute;
+  right: 7px;
+  top: 7px;
+  z-index: 9;
+    .header-background {
+    background-color: #ffffff;
+    margin: 0;
+      .icon {
+      margin-right: 15px;
+      color: @uno-app-orange-color;
+        }
+      }
+  }
+
+/* End */
+
+.alert-inbox-details{
+
+    font-size: 0.94em;
+    color:#000;
+    h2{
+      color: @uno-app-blue1-color;
+    }
+
+    h3{
+      color: @uno-app-header-color;
+    }
+
+    h4{
+      font-size: 26px;
+      font-weight: 300;
+      color: @uno-app-blue1-color;
+    }
+
+    h5{
+      color: @uno-app-blue1-color;
+    }
+
+    .sub-section-title {
+    margin-top: 15px;
+    border-bottom: 1px dotted @uno-app-green-border-color;
+    padding: 0 0 5px 12px;
+    font-weight: 300;
+    font-size: 16px;
+    color: #5987DE;
+    }
+
+    md-content {
+    background:#fff;
+    color:#000;
+    }
+    .details-section {
+    background-color: white;
+    padding-bottom: 20px;
+    border-bottom: solid 1px lightgray;
+    }
+
+    /* alert Header */
+
+    .alert-header{
+    background-color: #EEF0F7;
+    color: #2E3D5C;
+    padding: 10px 10px 10px 19px;
+    border: 1px #DDD solid;
+    box-shadow: 1px 2px 9px rgba(0, 0, 0, 0.1);
+    z-index: 0;
+        .actions-icon {
+            font-size: small;
+            font-weight: 300;
+            padding: 7px;
+        }
+
+        .actions-icon .md-button {
+            margin: 0px;
+            font-size: 36px;
+            font-weight: 300;
+        }
+
+        md-icon{
+            color:@uno-app-header-color !important;
+        }
+
+        a.md-button.md-primary:not([disabled]) md-icon, .md-button.md-primary:not([disabled]) md-icon{
+            color: @uno-app-orange-color !important;
+            font-size: 32px;
+        }
+
+        .title {
+            font-size: 18px;
+            font-weight: 400;
+        }
+
+        .sub-title { 
+            font-size: 13px;
+            font-weight: 400;
+            color: #A9A9A9;
+        }
+
+        .information-icon{
+        md-icon {
+            color:@uno-app-orange-color;
+          }
+        }
+
+    }
+	/*icon colors for details*/
+    .header-background {
+        background-color: #ffffff;
+        margin: 0;
+        .icon {
+            margin-right: 15px;
+            color: @uno-app-orange-color;
+        }
+    }
+
+    .material-icons {
+    /*color: @uno-app-orange-color;*/
+    }
+
+    .uploader {
+        border: 1px dashed #02B598 ;
+        border-radius: 2px ;
+        background: #FFF ;
+        padding: 5px ;
+    }
+
+}
+
+/* Details Section End */ 
+
+.mdIcon {width:24px; height:24px; margin-right:10px;}
+.mdIcon15 {width:24px; height:24px; margin-right:15px;}
+.nav {
+    width: 50px;
+
+    md-icon {
+        color: #6A7999;
+    }
+
+    .md-button {
+        border-bottom: solid 1px darkgrey;
+        min-width: 50px;
+        margin: 0px;
+        border-right: solid 1px lightgrey;
+        border-left: solid 1px lightgrey;
+        background-color: white;
+        border-radius: 0px;
+        padding: 5px;
+
+    }
+    .md-button.active {
+        border-left: solid 6px #7CDDCC;
+        z-index: 1;
+        border-right: none;
+    }
+
+    .badge {
+        margin-top: 4px;
+        background-color: #FFF;
+        color: #02B596;
+        font-size: 12px;
+        font-weight: 400;
+    }
+
+}
+.md-accent {
+background-color: white;
+color: #02B596;
+}
+.md-fab {
+background-color: white;
+color: #02B596;
+}
+.details-section-header {
+    margin-left: 15px;
+}
+
+.animate-show.ng-enter {
+    max-height: 0; /* approximate max height */
+
+    transition-property: all;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+}
+
+.animate-show.open.ng-enter.ng-enter-active {
+    max-height: 500px;
+}
+
+.legacyGridFade {
+	opacity:.4;
+	transition: opacity .25s ease-in-out;
+}
+.legacyGridMax {
+	opacity:1;
+	transition: opacity .25s ease-in-out;
+}
+.grid {
+  width: 500px;
+  height: 400px;
+}
+.ui-select-multiple:after {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    display: block;
+    width: 0;
+    height: 0;
+    margin-top: -3px;
+    border-color: #808080 transparent transparent transparent;
+    border-style: solid;
+    border-width: 5px 5px 0 5px;
+    content: ' ';
+    pointer-events: none;
+}
+
+/* Extra small devices (phones, less than 768px) */
+@media (max-width: @screen-sm-min) {
+
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (max-width: @screen-md-min) {
+  .nav {
+    display: none;
+  }
+
+  .actions-icon {
+    padding: 0px;
+  }
+
+  .alert-header {
+    height: 110px;
+  }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: @screen-lg-min) {
+
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: @screen-lg-min) {
+
+}
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+}
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.md-whiteframe-z4::-webkit-scrollbar { 
+    display: none; 
+}
+
+.ui-grid-tree-base-row-header-buttons {
+    padding-top: 6px;
+  }
